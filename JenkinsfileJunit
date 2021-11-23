@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     triggers {
         cron('40 15 * * *')
     }
@@ -7,16 +8,16 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git url: 'https://github.com/elpop12/qa.git'
-                branch: 'develop'
+                git branch: 'develop', url: 'https://github.com/elpop12/qa'
             }
         }
-        stage('bUild') {
+        stage('build') {
             steps {
                 sh "mvn clean test"
             }
         }
     }
+
     post {
         always {
             allure([
