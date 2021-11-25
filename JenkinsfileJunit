@@ -6,19 +6,20 @@ pipeline {
     }
 
     parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'test', 'stage', 'prd'], description: 'Choose environment.')
         choice(name: 'TAG', choices: ['junit', 'smoke', 'noparam', 'param', 'string', 'zadania', 'nested'], description: 'Choose tag.')
-        choice(name: 'EX_TAG', choices: ['','junit', 'smoke', 'noparam', 'param', 'string', 'zadania', 'nested'], description: 'Choose tag.')
+        choice(name: 'EX_TAG', choices: ['', 'junit', 'smoke', 'noparam', 'param', 'string', 'zadania', 'nested'], description: 'Choose tag.')
     }
 
     stages {
         stage('checkout') {
             steps {
-                git branch: 'develop', url: 'https://github.com/elpop12/qa'
+                git branch: 'develop', url: 'https://github.com/Test112021/qa'
             }
         }
         stage('build') {
             steps {
-                sh "mvn clean test -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qajunit"
+                sh "mvn clean test -DENVIRONMENT=${params.ENVIRONMENT} -Dgroups=${params.TAG} -DexcludedGroups=${params.EX_TAG} -pl qajunit"
             }
         }
     }
