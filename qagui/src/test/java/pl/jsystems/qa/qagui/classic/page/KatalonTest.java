@@ -1,4 +1,4 @@
-package pl.jsystems.qa.qagui;
+package pl.jsystems.qa.qagui.classic.page;
 
 
 import org.junit.jupiter.api.Test;
