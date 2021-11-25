@@ -14,7 +14,7 @@ public class GuiConfig {
     public static final String PASSWORD = ENV.getString("password");
 
 
-    public static final String BROWSER = ENV.getString("browser");
-    public static final String MACHINE = ENV.getString("machine");
-    public static final String REMOTE_URL = ENV.getString("remoteUrl");
+    public static final String BROWSER = CONFIG.getString("browser");
+    public static final String MACHINE = CONFIG.getString("machine");
+    public static final String REMOTE_URL = CONFIG.getString("remoteUrl");
 }
